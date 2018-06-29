@@ -21,6 +21,7 @@ Each of the objects are encoded by a method called bencoding.
  * Writing tests is a good idea, would likely do that
  * Saw a few implementations using inner classes would like to try that
  * Having a command line help, like a man page is good idea too
+ * Portability!
 
  ## Resources
  * [Wikipedia - Bencoding](https://en.wikipedia.org/wiki/Bencode)
