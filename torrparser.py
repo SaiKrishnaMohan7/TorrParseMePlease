@@ -1,16 +1,4 @@
 #! usr/bin/env python
-"""
-Key Concepts
-
-A Torrent file consists of integers, strings, lists, dictionaries
-
-Each of the objects are encoded by a method called bencoding.
-
-Strings - <lengthOfString><separtor><stringVal> eg: 3:Sai
-Integers - <'i'><numBase10><'e'>, ints are pre and post fixed by strings 'i' and 'e'. eg: i24e
-Lists - <'l'><benCodedItems><'e'> eg: l3:SAIi24e4:spame is ['SAI', 24, 'spam']
-Dictionaries - <'d'><alternatingKeyValue><'e'> eg: d3:sai4:bulk2:ksi24ee is {'sai': 'bulk', 'ks': 24}
-"""
 from datetime import datetime
 from glob import glob
 import os
