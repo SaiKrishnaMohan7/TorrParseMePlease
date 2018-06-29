@@ -9,6 +9,7 @@ class WrapTorr(object):
     'string_sep': ':',
     'common_end': 'e'
     }
+  
   silence = False
   
   def __init__(self, torr, silence=False):
@@ -18,7 +19,7 @@ class WrapTorr(object):
 
   def current(self):
     self.curr = self.torr.read(1)
-    return self.torr.read(1)
+    return self.curr
     
   def move(self, pos=-1, mode=1):
     self.torr.seek(pos, mode)

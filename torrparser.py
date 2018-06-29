@@ -84,18 +84,18 @@ class TorrParseMePlease(object):
       name = files_info.get('name')
       if name:
         parsed_files_info[name] = files_info.get('length')
-
+    
       # some single-file torrents (incorrectly) have their details
       # in the parsed_content scope (eg. uTorrent/3200)
       # only use this if no other fields have been present
-      if not parsed_files_info:
-          name = self.parsed_content.get('name')
-          if name:
-              parsed_files_info[name] = self.parsed_content.get('length')
+    if not parsed_files_info:
+      name = self.parsed_content.get('name')
+      if name:
+        parsed_files_info[name] = self.parsed_content.get('length')
 
-      parsed_files_info_lst = [ (k, v) for k, v in parsed_files_info.items() ]
+    parsed_files_info_lst = [ (k, v) for k, v in parsed_files_info.items() ]
 
-      return parsed_files_info_lst
+    return parsed_files_info_lst
     
   def _parse_torr_file(self):
     parsed_char = self.torr_str.current()
@@ -141,19 +141,15 @@ if __name__ == '__main__':
     torrent_files = sys.argv[1:]
     for torrent_file in torrent_files:
         if os.path.exists(torrent_file):
-            print 'Parsing file {}'.format(torrent_file)
+          print 'Parsing file {}'.format(torrent_file)
         else:
-            sys.exit('Unable to find file {}'.format(torrent_file))
-  else:
-    print 'Parsing test torrent files ..'
-
-    test_files_path = '/../test/data/'
-    cwd = os.path.dirname(os.path.realpath(__file__))
-    test_data_dir = os.path.normpath(cwd + test_files_path)
-    torrent_files = glob(os.path.join(test_data_dir, '*.torrent'))
+          sys.exit('Unable to find file {}'.format(torrent_file))
 
   for torrent_file in torrent_files:
     tp = TorrParseMePlease(torrent_file)
-    print torrent_file
-    print tp.get_tracking_url(), tp.get_creation_date(), tp.get_client(), tp.get_file_details()
-    print '*' * 80
+    print
+    print 'File Name: ' + torrent_file
+    print 'Tracker URL: ' + tp.get_tracking_url()
+    print 'Created Date: ' + tp.get_creation_date()
+    print 'Client Name: ' + tp.get_client()
+    print 'File Details: ' + str(tp.get_file_details()) + '\n'
