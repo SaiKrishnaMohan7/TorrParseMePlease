@@ -1,4 +1,8 @@
 #! usr/bin/env python
+"""
+A BitTorrent Parser that extracts tarcker url,
+created date, file details - parts and checksum, client name
+"""
 from datetime import datetime
 from glob import glob
 import os
@@ -56,7 +60,7 @@ class TorrParseMePlease(object):
   def get_file_details(self):
     parsed_files_info = {}
 
-    # 'info' should be present in all torrent files.
+    # Assuming all files have 'info' key
     files_info = self.parsed_content.get('info', {})
 
     # multiple-file torrent
@@ -73,9 +77,7 @@ class TorrParseMePlease(object):
       if name:
         parsed_files_info[name] = files_info.get('length')
     
-      # some single-file torrents (incorrectly) have their details
-      # in the parsed_content scope (eg. uTorrent/3200)
-      # only use this if no other fields have been present
+    # two files while testing had weird data this kinda handles it
     if not parsed_files_info:
       name = self.parsed_content.get('name')
       if name:
@@ -124,7 +126,7 @@ class TorrParseMePlease(object):
   
 
 if __name__ == '__main__':
-    
+  # Handling multiple command line args
   if len(sys.argv) > 1:
     torrent_files = sys.argv[1:]
     for torrent_file in torrent_files:

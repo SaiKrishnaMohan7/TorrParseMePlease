@@ -10,6 +10,7 @@ Each of the objects are encoded by a method called bencoding.
  * Integers - `<'i'><numBase10><'e'>, ints are pre and post fixed by strings 'i' and 'e'. eg: i24e`
  * Lists - `<'l'><benCodedItems><'e'> eg: l3:SAIi24e4:spame is ['SAI', 24, 'spam']`
  * Dictionaries - `<'d'><alternatingKeyValue><'e'> eg: d3:sai4:bulk2:ksi24ee is {'sai': 'bulk', 'ks': 24}`
+ * There may be torrents that have multiple files or single
 
  ## Usage
  * Check for Python installation, 2.7

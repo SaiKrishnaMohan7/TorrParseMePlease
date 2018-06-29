@@ -4,6 +4,10 @@ import string
 
 
 class WrapTorr(object):
+  """
+  Used for doing the heavy work, finding objects, types etc.
+  Torrent file becomes a file like string object that could be used for seeking, reading etc.
+  """
   delim = {
     'int': 'i',
     'string_sep': ':',
@@ -22,6 +26,7 @@ class WrapTorr(object):
     return self.curr
     
   def move(self, pos=-1, mode=1):
+    # Used for refining finding exact DS
     self.torr.seek(pos, mode)
     
   def parse_str(self):
